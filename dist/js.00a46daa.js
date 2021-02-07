@@ -122,38 +122,41 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-/*API  key: 2UVQEY3ZXDGBHTJO */
-
-/*https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=2UVQEY3ZXDGBHTJO*/
+//add event listener on page load
 window.addEventListener('load', function (e) {
-  var searchUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&apikey=2UVQEY3ZXDGBHTJO&symbol=";
-  var test = document.forms['searchForm'];
-  test.addEventListener('submit', function (e) {
+  // search url with api key
+  var searchUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&apikey=2UVQEY3ZXDGBHTJO&symbol="; //form
+
+  var formData = document.forms['searchForm']; //add event listener when click on submit button
+
+  formData.addEventListener('submit', function (e) {
+    //prevent default   
     e.preventDefault();
-    console.log(e.currentTarget.elements.search.value);
-    var symbol = e.currentTarget.elements.search.value;
-    var stockData = getData(e.currentTarget.elements.search.value);
-    console.log(stockData);
+    console.log(e.currentTarget.elements.search.value); // get the input entered by the user
+
+    var symbolEntered = e.currentTarget.elements.search.value; //call the getData() function here which returns data
+
+    var stockData = getData(symbolEntered); //console.log(stockData);
+    //get response and display it as a template
+
     stockData.then(function (res) {
+      //display error if user enter wrong input
       if (res['Error Message']) {
-        //const errorTemplate ='<p>${warning}</p>';
-        var errorTemplate = "<p>Sorry cannot find the stock quote</p>";
+        var errorTemplate = "<p>Sorry cannot find the stock information.</p>";
         document.querySelector('.stock-display').innerHTML = errorTemplate;
       } else {
-        var successTemplate = "<ul>\n               <li>".concat(res['Time Series (5min)'], "</li>\n               <li>").concat(res['Meta Data']['1. Information'], "</li>\n               <li>").concat(res['Meta Data']['2. Symbol'], "</li>\n               <li>").concat(res['Meta Data']['3. Last Refreshed'], "</li>\n               <li>").concat(res['Meta Data']['4. Interval'], "</li>\n               <li>").concat(res['Meta Data']['5. Output Size'], "</li>\n               <li>").concat(res['Meta Data']['6. Time Zone'], "</li>\n               </ul>");
+        //display data in html
+        var successTemplate = "<h2>Data Retrieved</h2><ul>\n               <li><span><b>Information:</b></span> ".concat(res['Meta Data']['1. Information'], "</li>\n               <li><span><b>Symbol:</b></span> ").concat(res['Meta Data']['2. Symbol'], "</li>\n               <li><span><b>Last Refreshed:</b></span> ").concat(res['Meta Data']['3. Last Refreshed'], "</li>\n               <li><span><b>Interval:</b></span> ").concat(res['Meta Data']['4. Interval'], "</li>\n               <li><span><b>Output Size:</b></span> ").concat(res['Meta Data']['5. Output Size'], "</li>\n               <li><span><b>Time Zone:</b></span> ").concat(res['Meta Data']['6. Time Zone'], "</li>\n               </ul>");
         document.querySelector('.stock-display').innerHTML = successTemplate;
-      } // console.log('re');
-      // console.log(res);
-
+      }
     }).catch(function (err) {
       return console.log(err);
     });
-  });
+  }); //function to get data
 
   function getData(_x) {
     return _getData.apply(this, arguments);
-  } //getData();
-
+  }
 
   function _getData() {
     _getData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(symbol) {
@@ -162,7 +165,9 @@ window.addEventListener('load', function (e) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              url = searchUrl + symbol;
+              //pass symbol value entered by the user with the url
+              url = searchUrl + symbol; //fetch data
+
               _context.next = 3;
               return fetch(url);
 
@@ -173,10 +178,8 @@ window.addEventListener('load', function (e) {
 
             case 6:
               result = _context.sent;
-              //console.log(result['Meta Data']['2. Symbol']);
-              //const a = {temp:1}
-              //a['temp']
-              console.log(result["Meta Data"]);
+              console.log(result["Meta Data"]); //return data
+
               return _context.abrupt("return", result);
 
             case 9:
@@ -217,7 +220,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64086" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
