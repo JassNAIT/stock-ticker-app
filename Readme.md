@@ -5,14 +5,14 @@ To run this app follow the instuctions in the Readme.md file.
 
 __Project Setup__  
 Create folder structure
- root
-  --src
-      --css
-         --styles.css
-      --js
-         --index.js
-         --index.html
-  --Readme.md 
+-  root
+-   --src
+-      --css
+-         --styles.css
+-      --js
+-         --index.js
+-         --index.html
+-  --Readme.md 
 
 __Review Creating package.json__ 
 Open the terminal
@@ -23,22 +23,22 @@ Open the terminal
 
 __Installing node modules__  
 Installing Project Dependancies: 
-    Install parcel bundler, run the below command
-    npm install -D parcel-bundler
-    This will create package-lock.json file and node_modules folder on the root
+  -  Install parcel bundler, run the below command
+  -  npm install -D parcel-bundler
+  -  This will create package-lock.json file and node_modules folder on the root
 
 Add the following code to your package.json file within "scripts"
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
+  -  "build": "parcel build src/index.html",
+  -  "start": "parcel src/index.html"
 
 __Create A Project In Git__  
-Add new repository to git. Add its link to package.json file
-Clone the project from localhost with github repository
+- Add new repository to git. Add its link to package.json file
+- Clone the project from localhost with github repository
 
 __API Volcabulary__
-Create API key from Alpha Vantage API
-For this app the API  key used is: 2UVQEY3ZXDGBHTJO 
-And the Url is https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=2UVQEY3ZXDGBHTJO
+- Create API key from Alpha Vantage API
+- For this app the API  key used is: 2UVQEY3ZXDGBHTJO 
+- And the Url is https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=2UVQEY3ZXDGBHTJO
 
 __Postman__  
 Add API link to the postman and test the api
@@ -51,3 +51,5 @@ __Working Of App__
 
 __Deployment To Netlify__  
 Deploy project to Netlify. 
+- For this app, 
+- Netlify Link: https://stock-ticker-app-jaswinder-kaur.netlify.app/

@@ -18,7 +18,7 @@ window.addEventListener('load',function(e){
         stockData.then(res=>{
             //display error if user enter wrong input
             if(res['Error Message']){ 
-                const errorTemplate =`<p>Sorry cannot find the stock information.</p>`;
+                const errorTemplate =`<p>Sorry cannot find the stock information. Please fill the correct symbol.</p>`;
                 document.querySelector('.stock-display').innerHTML = errorTemplate;
           }else{
               //display data in html
