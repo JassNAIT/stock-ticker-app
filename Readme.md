@@ -11,15 +11,15 @@ Create folder structure
 -         --styles.css
 -      --js
 -         --index.js
--         --index.html
+-  --index.html
 -  --Readme.md 
 
 __Review Creating package.json__ 
 Open the terminal
- --Go to the root folder
- run the command to initiate the project
- npm init
- Fill all the information required, this will create a package.json file on the root folder
+- --Go to the root folder
+- run the command to initiate the project
+- npm init
+- Fill all the information required, this will create a package.json file on the root folder
 
 __Installing node modules__  
 Installing Project Dependancies: 
